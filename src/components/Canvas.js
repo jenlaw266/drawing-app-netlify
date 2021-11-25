@@ -81,7 +81,7 @@ const Canvas = (props) => {
     }
 
     contextRef.current = context;
-  }, [elements, colour, brushWidth, elementType, save]);
+  }, [elements, colour, brushWidth, elementType, save, setImgData]);
 
   const distance = (a, b) =>
     Math.sqrt(Math.pow(a.x - b.x, 2) + Math.pow(a.y - b.y, 2));
@@ -135,6 +135,7 @@ const Canvas = (props) => {
         for (const value of array) {
           if (value) return value;
         }
+        return false;
       }
     });
   };
