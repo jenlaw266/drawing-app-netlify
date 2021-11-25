@@ -1,0 +1,52 @@
+#paint {
+  border: 1px solid black;
+  background: white;
+  margin-left: auto;
+  margin-right: auto;
+  display: block;
+}
+
+article {
+  display: flex;
+  align-items: center;
+  align-content: center;
+}
+
+#right-align {
+  justify-content: flex-end;
+}
+
+.tile.is-parent {
+  padding-bottom: 0;
+}
+
+label {
+  margin-left: 1rem;
+  font-weight: bold;
+}
+
+.label {
+  margin-left: 0;
+}
+
+.section {
+  padding-top: 1em;
+}
+
+input {
+  margin-right: 1rem;
+}
+
+.save-button {
+  align-self: flex-end;
+}
+
+#draw-section {
+  background-image: none;
+}
+
+@media (max-width: 850px) {
+  body {
+    background-color: white;
+  }
+}

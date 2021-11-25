@@ -1,0 +1,20 @@
+.column.desc {
+  display: flex;
+  align-items: center;
+}
+
+.tile.is-ancestor:not(:last-child) {
+  margin-bottom: 3rem;
+}
+
+.title.is-1 {
+  padding-top: 5vh;
+}
+
+.subtitle.is-3 {
+  padding-bottom: 5vh;
+}
+
+section {
+  background-image: url("./double-bubble-outline.png");
+}
