@@ -167,9 +167,7 @@ const Canvas = (props) => {
     setElements(elementsCopy);
   };
 
-  console.log(selectedElement?.id);
   const handleMouseDown = (e) => {
-    console.log(elements);
     const { offsetX, offsetY } = e.nativeEvent;
     if (elementType === "select") {
       const element = getElementAtPosition(offsetX, offsetY, elements);
