@@ -15,7 +15,7 @@ const Home = () => {
               <div class="tile is-child box">
                 <div className="columns">
                   <div className="column is-full">
-                    <p class="title is-1">Draw</p>
+                    <p class="title is-1 is-spaced">Draw</p>
                     <p class="subtitle is-3">a simple drawing app</p>
                   </div>
                 </div>
