@@ -29,11 +29,13 @@ _Note: Draw was built as a fulfillment to mintbean's hackathon requirement._
 
 #### Canvas
 
-![Canvas](https://github.com/jenlaw266/drawing-app-netlify/blob/master/src/pages/videoCanvas.mov)
+https://user-images.githubusercontent.com/86625518/143553595-d39358af-e312-453c-a92f-06bcb2b8d91d.mov
+
 
 #### Gallery
 
-![Gallery](https://github.com/jenlaw266/drawing-app-netlify/blob/master/src/pages/videoGallery.mov)
+https://user-images.githubusercontent.com/86625518/143553617-5e1d6f3a-accc-4fcc-a374-bec343d9e8ed.mov
+
 
 ## Getting Started
 
