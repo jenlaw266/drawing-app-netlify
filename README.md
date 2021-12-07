@@ -14,7 +14,9 @@
 
 - **Delete and clear:** delete a selected stroke, or clear the page!
 
-- **Post:** post your art to the Gallery!
+- **Post and browse:** post and browse your art to the Gallery!
+
+- **View, edit and delete:** view, edit, or delete your art indiviually!
 
 _Note: Draw was built as a fulfillment to mintbean's hackathon requirement._
 
