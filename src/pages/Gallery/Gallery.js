@@ -91,7 +91,7 @@ const Gallery = () => {
       <section className="section">
         <div className="container">
           <div className="content">
-            <h2 class="title is-2">Gallery</h2>
+            <h2 className="title is-2">Gallery</h2>
             <div className="columns is-multiline">
               {data.map((pic, i) => {
                 const { description, name, image, id } = pic;

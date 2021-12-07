@@ -14,7 +14,7 @@ import { useState, useEffect } from "react";
 import axios from "axios";
 
 const Draw = () => {
-  const [elementType, setElementType] = useState("brush");
+  const [elementType, setElementType] = useState("brush"); //buttons on toolbox
   const [brushWidth, setBrushWidth] = useState(20);
   const [colour, setColour] = useState("black");
   const [elements, setElements] = useState([]);
@@ -76,9 +76,9 @@ const Draw = () => {
   return (
     <section className="section" id="draw-section">
       <div className="container">
-        <div class={`tile is-ancestor ${warning ? "" : "is-hidden"}`}>
-          <div class="tile is-parent is-12">
-            <div class="tile is-child notification is-warning">{warning}</div>
+        <div className={`tile is-ancestor ${warning ? "" : "is-hidden"}`}>
+          <div className="tile is-parent is-12">
+            <div className="tile is-child notification is-warning">{warning}</div>
           </div>
         </div>
         <div className="tile is-ancestor">

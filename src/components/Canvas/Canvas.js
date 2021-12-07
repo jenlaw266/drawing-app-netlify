@@ -32,9 +32,9 @@ const Canvas = (props) => {
     context.rect(0, 0, context.canvas.width, context.canvas.height);
     context.fillStyle = "white";
     context.fill();
-
     context.lineCap = "round";
 
+    //draw all elements in array to canvas
     elements.forEach((el) => {
       const type = el?.type;
       if (type === "line") {
@@ -71,10 +71,12 @@ const Canvas = (props) => {
       }
     });
 
+    //clear functionality
     if (elementType === "clear") {
       context.clearRect(0, 0, context.canvas.width, context.canvas.height);
     }
 
+    //pass img data to Draw component
     if (save) {
       const dataURL = canvas.toDataURL("image/jpeg", 0.5);
       setImgData(dataURL);
@@ -83,9 +85,11 @@ const Canvas = (props) => {
     contextRef.current = context;
   }, [elements, colour, brushWidth, elementType, save, setImgData]);
 
-  const distance = (a, b) =>
+  //calculate line distance
+  const calcDistance = (a, b) =>
     Math.sqrt(Math.pow(a.x - b.x, 2) + Math.pow(a.y - b.y, 2));
 
+  //adjust coords so that x1 y1 is always upper left
   const adjustElementCoords = (element) => {
     const { x1, y1, x2, y2, type } = element;
     if (type === "rect") {
@@ -103,6 +107,7 @@ const Canvas = (props) => {
     }
   };
 
+  //grab element for editing (move, fill, delete)
   const getElementAtPosition = (x, y, elements) => {
     return elements.find((element) => {
       const type = element?.type;
@@ -118,7 +123,8 @@ const Canvas = (props) => {
         const a = { x: x1, y: y1 };
         const b = { x: x2, y: y2 };
         const c = { x, y };
-        const offset = distance(a, b) - (distance(a, c) + distance(b, c));
+        const offset =
+          calcDistance(a, b) - (calcDistance(a, c) + calcDistance(b, c));
         return Math.abs(offset) < 1;
       } else {
         const stroke = element?.stroke;
@@ -129,7 +135,8 @@ const Canvas = (props) => {
           const a = { x: stroke[i][0], y: stroke[i][1] };
           const b = { x: stroke[i + factor][0], y: stroke[i + factor][0] };
           const c = { x, y };
-          const offset = distance(a, b) - (distance(a, c) + distance(b, c));
+          const offset =
+            calcDistance(a, b) - (calcDistance(a, c) + calcDistance(b, c));
           array.push(Math.abs(offset) < 1);
         }
         for (const value of array) {
@@ -140,39 +147,26 @@ const Canvas = (props) => {
     });
   };
 
-  const updateElement = (
-    id,
-    x1,
-    y1,
-    x2,
-    y2,
-    type,
-    bColour,
-    bWidth,
-    fColour
-  ) => {
-    const updatedElement = {
-      id,
-      x1,
-      y1,
-      x2,
-      y2,
-      type,
-      bColour,
-      bWidth,
-      fColour,
-    };
+  //update line and rectangles in array
+  const updateElement = (id, x1, y1, x2, y2, type, bColour, bWidth, fColour) => {
+    const updatedElement = {id, x1, y1, x2, y2, type, bColour, bWidth, fColour};
     const elementsCopy = [...elements];
-    elementsCopy[id] = updatedElement;
+    const currentEl = elementsCopy.find(el => el.id === id);
+    elementsCopy[elementsCopy.indexOf(currentEl)] = updatedElement;
     setElements(elementsCopy);
   };
 
+  //mouse-down cases: select, drawing 
   const handleMouseDown = (e) => {
+    console.log(elements)
     const { offsetX, offsetY } = e.nativeEvent;
+    //elementType is select for buttons fill, delete, select  
+    //select cases: fill, delete(remove), select(moving) 
     if (elementType === "select") {
       const element = getElementAtPosition(offsetX, offsetY, elements);
       if (element) {
         if (action === "fill") {
+          //currently update fill colour only for rectangle
           if (element.type === "rect") {
             const { id, x1, y1, x2, y2, type, bColour, bWidth } = element;
             updateElement(id, x1, y1, x2, y2, type, bColour, bWidth, colour);
@@ -181,16 +175,8 @@ const Canvas = (props) => {
             updateElement(id, x1, y1, x2, y2, type, colour, bWidth);
           } else {
             const { id, stroke, x1, y1, type, bWidth } = element;
-            const newBrush = {
-              id,
-              stroke,
-              x1,
-              y1,
-              type,
-              bColour: colour,
-              bWidth,
-            };
-            //need to refactor -repeating code
+            const newBrush = { id, stroke, x1, y1, type, bColour: colour, bWidth };
+            //repeating code to refactor
             const elementsCopy = [...elements];
             elementsCopy[id] = newBrush;
             setElements(elementsCopy);
@@ -248,10 +234,11 @@ const Canvas = (props) => {
     }
   };
 
+  //mouse-move cases: drawing, moving
   const handleMouseMove = (e) => {
     const { offsetX, offsetY } = e.nativeEvent;
 
-    //mouse cursor
+    //switch mouse cursor
     if (elementType === "select") {
       e.target.style.cursor = "default";
       if (getElementAtPosition(offsetX, offsetY, elements)) {
@@ -262,8 +249,7 @@ const Canvas = (props) => {
         }
       }
     }
-
-    const index = elements.length - 1;
+    const index =  elements.length - 1
 
     if (action === "drawing") {
       if (elementType === "brush") {
@@ -278,7 +264,7 @@ const Canvas = (props) => {
           bColour,
           bWidth,
         };
-        //need to refactor -repeating code
+        //repeating code to refactor
         const elementsCopy = [...elements];
         elementsCopy[index] = newBrush;
         setElements(elementsCopy);
@@ -297,7 +283,7 @@ const Canvas = (props) => {
           fColour
         );
       }
-    } else if (action === "moving") {
+    } else if (action === "moving" && selectedElement) {
       if (selectedElement?.type !== "brush") {
         const {
           id,
@@ -346,7 +332,8 @@ const Canvas = (props) => {
           bWidth,
         };
         const elementsCopy = [...elements];
-        elementsCopy[id] = newBrush;
+        const currentEl = elementsCopy.find(el => el.id === id);
+        elementsCopy[elementsCopy.indexOf(currentEl)] = newBrush;
         setElements(elementsCopy);
       }
     }

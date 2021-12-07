@@ -10,13 +10,13 @@ const Home = () => {
     <div>
       <section className="section">
         <div className="container">
-          <div class="tile is-ancestor">
-            <div class="tile is-12 is-parent">
-              <div class="tile is-child box">
+          <div className="tile is-ancestor">
+            <div className="tile is-12 is-parent">
+              <div className="tile is-child box">
                 <div className="columns">
                   <div className="column is-full">
-                    <p class="title is-1 is-spaced">Draw</p>
-                    <p class="subtitle is-3">a simple drawing app</p>
+                    <p className="title is-1 is-spaced">Draw</p>
+                    <p className="subtitle is-3">a simple drawing app</p>
                   </div>
                 </div>
                 <div className="columns">
@@ -43,9 +43,9 @@ const Home = () => {
             </div>
           </div>
 
-          <div class="tile is-ancestor">
-            <div class="tile is-12 is-parent">
-              <div class="tile is-child box">
+          <div className="tile is-ancestor">
+            <div className="tile is-12 is-parent">
+              <div className="tile is-child box">
                 <div className="columns">
                   <div className="column desc">
                     <p>
@@ -85,9 +85,9 @@ const Home = () => {
             </div>
           </div>
 
-          <div class="tile is-ancestor">
-            <div class="tile is-12 is-parent">
-              <div class="tile is-child box">
+          <div className="tile is-ancestor">
+            <div className="tile is-12 is-parent">
+              <div className="tile is-child box">
                 <div className="columns">
                   <div className="column is-two-thirds">
                     <video controls autoPlay loop muted>
