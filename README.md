@@ -1,4 +1,4 @@
-![Draw](https://github.com/jenlaw266/drawing-app-netlify/blob/master/src/components/draw-logo.png)
+![Draw](https://github.com/jenlaw266/drawing-app-netlify/blob/master/src/components/Nav/draw-logo.png)
 
 ## About
 

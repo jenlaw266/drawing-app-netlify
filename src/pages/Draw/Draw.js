@@ -28,6 +28,7 @@ const Draw = () => {
   const [posted, setPosted] = useState(false);
   const [warning, setWarning] = useState("");
 
+  //Responsive Design (incomplete)
   //window width < 754px - set toolbar to horizontal
 
   let toolbarWidth = "is-1";
@@ -39,6 +40,7 @@ const Draw = () => {
   }
 
   useEffect(() => {
+    //warning for - if gallery is full
     setWarning("");
     axios.get("/api/gallery").then((res) => {
       if (res.data.length >= 6) {
@@ -49,7 +51,7 @@ const Draw = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-
+    //new drawing
     axios
       .post("/api/drawing/new", {
         name: formData.name,
@@ -64,6 +66,7 @@ const Draw = () => {
       });
   };
 
+  //form input
   const handleInput = (e) => {
     const newData = { ...formData };
     newData[e.target.id] = e.target.value;
@@ -267,7 +270,7 @@ const Draw = () => {
             </section>
             <footer className="modal-card-foot">
               <button className="button is-success" type="submit">
-                Save drawing
+                Publish drawing
               </button>
             </footer>
           </form>

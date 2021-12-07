@@ -167,10 +167,6 @@ const Canvas = (props) => {
     setElements(elementsCopy);
   };
 
-<<<<<<< HEAD:src/components/Canvas/Canvas.js
-=======
- 
->>>>>>> 14261e35fe1c49b57ef21a2bf9b9cc599d75c17e:src/components/Canvas.js
   const handleMouseDown = (e) => {
     const { offsetX, offsetY } = e.nativeEvent;
     if (elementType === "select") {

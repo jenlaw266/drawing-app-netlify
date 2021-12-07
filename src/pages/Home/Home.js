@@ -107,7 +107,7 @@ const Home = () => {
                           </li>
                           <li>~ Edit the title and description of your art!</li>
                           <li>~ Delete old drawings by clicking delete!</li>
-                          <li>~ The Galley can display up to 6 drawings!</li>
+                          <li>~ The Gallery can display up to 6 drawings!</li>
                         </ul>
                       </ol>
                     </p>

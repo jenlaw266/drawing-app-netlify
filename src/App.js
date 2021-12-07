@@ -1,4 +1,3 @@
-import "./App.css";
 import Nav from "./components/Nav/Nav";
 import "bulma/css/bulma.css";
 import { Outlet } from "react-router-dom";

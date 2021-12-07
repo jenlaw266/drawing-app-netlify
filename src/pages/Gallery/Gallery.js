@@ -1,9 +1,11 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
 import "./Gallery.css";
-import Footer from "../components/Footer/Footer";
+import Footer from "../../components/Footer/Footer";
 
+//Card component
 const Card = ({ id, name, desc, img, setView, setRefresh, setUpdate }) => {
+  //delete 1 drawing
   const handleDelete = (id) => {
     axios.delete(`/api/drawing/${id}`).then((res) => {
       setRefresh(true);
@@ -47,6 +49,7 @@ const Card = ({ id, name, desc, img, setView, setRefresh, setUpdate }) => {
   );
 };
 
+//Gallery component
 const Gallery = () => {
   const [data, setData] = useState([]);
   const [view, setView] = useState(null);
@@ -54,6 +57,7 @@ const Gallery = () => {
   const [refresh, setRefresh] = useState(false);
 
   useEffect(() => {
+    //get all drawings
     axios.get("/api/gallery").then((res) => {
       setData(res.data);
       setRefresh(false);
@@ -62,7 +66,7 @@ const Gallery = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-
+    //update drawing
     axios
       .put(`/api/drawing/${update.id}`, {
         name: update.name,
@@ -75,6 +79,7 @@ const Gallery = () => {
       });
   };
 
+  //form input
   const handleInput = (e) => {
     const newData = { ...update };
     newData[e.target.id] = e.target.value;
@@ -121,7 +126,7 @@ const Gallery = () => {
               </div>
             </div>
           </div>
-          {/* repeat form from drawing - refactor? */}
+          {/* repeat form from drawing - refactor */}
           <div
             className={`modal ${
               Object.keys(update).length !== 0 ? "is-active" : ""
