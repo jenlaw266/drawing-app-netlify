@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
 import "./Gallery.css";
-import Footer from "../components/Footer";
+import Footer from "../components/Footer/Footer";
 
 const Card = ({ id, name, desc, img, setView, setRefresh, setUpdate }) => {
   const handleDelete = (id) => {

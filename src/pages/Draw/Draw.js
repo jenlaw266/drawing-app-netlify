@@ -1,5 +1,5 @@
 import "./Draw.css";
-import Canvas from "../components/Canvas";
+import Canvas from "../../components/Canvas/Canvas";
 import {
   FaMousePointer,
   FaMinus,

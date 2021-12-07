@@ -1,6 +1,6 @@
 import canvasPhoto from "./canvasPhoto.png";
 import { Link } from "react-router-dom";
-import Footer from "../components/Footer";
+import Footer from "../../components/Footer/Footer";
 import videoCanvas from "./videoCanvas.mov";
 import videoGallery from "./videoGallery.mov";
 import "./Home.css";
