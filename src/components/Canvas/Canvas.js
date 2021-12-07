@@ -113,11 +113,7 @@ const Canvas = (props) => {
       const type = element?.type;
       if (type === "rect") {
         const { x1, y1, x2, y2 } = element;
-        const minX = Math.min(x1, x2);
-        const maxX = Math.max(x1, x2);
-        const minY = Math.min(y1, y2);
-        const maxY = Math.max(y1, y2);
-        return x >= minX && x <= maxX && y >= minY && y <= maxY;
+        return x >= x1 && x <= x2 && y >= y1 && y <= y2;
       } else if (type === "line") {
         const { x1, y1, x2, y2 } = element;
         const a = { x: x1, y: y1 };
@@ -158,7 +154,7 @@ const Canvas = (props) => {
 
   //mouse-down cases: select, drawing 
   const handleMouseDown = (e) => {
-    console.log(elements)
+
     const { offsetX, offsetY } = e.nativeEvent;
     //elementType is select for buttons fill, delete, select  
     //select cases: fill, delete(remove), select(moving) 
@@ -252,6 +248,7 @@ const Canvas = (props) => {
     const index =  elements.length - 1
 
     if (action === "drawing") {
+
       if (elementType === "brush") {
         const { id, stroke, x1, y1, type, bColour, bWidth } = elements[index];
         const newStroke = [...stroke, [offsetX, offsetY]];
@@ -269,35 +266,13 @@ const Canvas = (props) => {
         elementsCopy[index] = newBrush;
         setElements(elementsCopy);
       } else if (elementType === "line" || elementType === "rect") {
-        const { x1, y1, bColour, bWidth, fColour } = elements[index];
-
-        updateElement(
-          index,
-          x1,
-          y1,
-          offsetX,
-          offsetY,
-          elementType,
-          bColour,
-          bWidth,
-          fColour
-        );
+        const { id, x1, y1, bColour, bWidth, fColour } = elements[index];
+        updateElement(id, x1, y1, offsetX, offsetY, elementType, bColour, bWidth, fColour);
       }
+
     } else if (action === "moving" && selectedElement) {
       if (selectedElement?.type !== "brush") {
-        const {
-          id,
-          x1,
-          x2,
-          y1,
-          y2,
-          type,
-          bColour,
-          bWidth,
-          fColour,
-          elOffsetX,
-          elOffsetY,
-        } = selectedElement;
+        const { id, x1, x2, y1, y2, type, bColour, bWidth, fColour, elOffsetX, elOffsetY } = selectedElement;
         const width = x2 - x1;
         const height = y2 - y1;
         const newX1 = offsetX - elOffsetX;
@@ -321,7 +296,7 @@ const Canvas = (props) => {
           return [each[0] + offsetX - elOffsetX, each[1] + offsetY - elOffsetY];
         });
 
-        //need to refactor -repeating code
+        //repeating code to refractor
         const newBrush = {
           id,
           stroke: newStroke,
