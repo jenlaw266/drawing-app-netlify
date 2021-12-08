@@ -2,7 +2,8 @@
 
 ## About
 
-**Draw** is a simple drawing app built using the HTML canvas element.
+[**Draw**](https://draw-hackathon.netlify.app/)
+is a simple drawing app built using the HTML canvas element.
 
 **Features:**
 
