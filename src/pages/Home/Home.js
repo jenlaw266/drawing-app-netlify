@@ -48,8 +48,9 @@ const Home = () => {
               <div className="tile is-child box">
                 <div className="columns">
                   <div className="column desc">
-                    
+                    <p>
                       <strong>Features:</strong>
+                      
                       <br />
                       <br />
                       <ol>
@@ -73,7 +74,7 @@ const Home = () => {
                           <li>~ Post - post your art to the Gallery!</li>
                         </ul>
                       </ol>
-                    
+                    </p>
                   </div>
                   <div className="column is-two-thirds">
                     <video controls autoPlay loop muted>
@@ -95,7 +96,7 @@ const Home = () => {
                     </video>
                   </div>
                   <div className="column desc">
-                    
+                    <p>
                       <strong>Gallery:</strong>
                       <br />
                       <br />
@@ -110,7 +111,7 @@ const Home = () => {
                           <li>~ The Gallery can display up to 6 drawings!</li>
                         </ul>
                       </ol>
-                    
+                    </p>
                   </div>
                 </div>
               </div>
